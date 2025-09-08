@@ -1,9 +1,10 @@
 import pygame
 import sys
 from constants import *
-from player import *
-from asteroid import *
-from asteroidfield import *
+from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
+from shot import Shot
 
 def main():
     pygame.init()
@@ -35,6 +36,7 @@ def main():
             object.draw(screen)
 
         updatable.update(dt)
+        player.shot_timer -= dt
 
         for object in asteroids:
             if object.collision(player) == True:
